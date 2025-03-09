@@ -37,6 +37,8 @@ function Login() {
                 handleSuccess(result.message);
                 localStorage.setItem('token', result.jwtToken);
                 localStorage.setItem('loggedInUser', result.name);
+                localStorage.setItem('loggedInUserEmail', result.email);
+                localStorage.setItem('loggedInUserPasswowd', result.password);
                 setTimeout(() => navigate('/home'), 1000);
             } else {
                 handleError(result.error?.details?.[0]?.message || result.message);
@@ -78,7 +80,7 @@ function Login() {
                         Login
                     </button>
                     <span className="block text-center mt-2 text-sm">
-                        Don't have an account? <Link to="/signup" className="text-sky-950">Signup</Link>
+                        Don't have an account? <Link to="/signup" className="text-sky-950">Signup🧑‍🚀</Link>
                     </span>
                 </form>
                 <ToastContainer />

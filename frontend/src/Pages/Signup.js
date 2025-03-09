@@ -23,7 +23,7 @@ function Signup() {
             return handleError('Name, email, and password are required');
         }
         try {
-            const url = `https://localhost:5000/auth/signup`;
+            const url = `http://localhost:5000/auth/signup`;
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -88,7 +88,7 @@ function Signup() {
                         Signup
                     </button>
                     <span className="block text-center mt-2 text-sm">
-                        Already have an account? <Link to="/login" className="text-sky-950 ">Login</Link>
+                        Already have an account? <Link to="/login" className="text-sky-950 ">Login🧑‍🚀</Link>
                     </span>
                 </form>
                 <ToastContainer />
