@@ -1,7 +1,9 @@
 import bcrypt from 'bcryptjs';   
 import jwt from 'jsonwebtoken';
-import UserModel from '../Models/User.js';
-
+import UserModel from '../Models/User.model.js';
+import CredentialModel from '../Models/Credentials.model.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 export const signup = async (req, res) => {
     try {
@@ -9,10 +11,11 @@ export const signup = async (req, res) => {
         const user = await UserModel.findOne({ email });
         if (user) {
             return res.status(409)
-                .json({ message: 'User is already exist, you can login', success: false });
+                .json({ message: '🧑‍🚀Already here!! Please login', success: false });
         }
         const userModel = new UserModel({ name, email, password });
         userModel.password = await bcrypt.hash(password, 10);
+        
         await userModel.save();
         res.status(201)
             .json({
@@ -46,7 +49,7 @@ export const login = async (req, res) => {
         const jwtToken = jwt.sign(
             { email: user.email, _id: user._id },
             process.env.JWT_SECRET,
-            { expiresIn: '24h' }
+            { expiresIn: '24 d' }
         )
 
         res.status(200)

@@ -4,8 +4,9 @@ import { Router } from 'express';
 
 const router = Router();
 
-const authRoutes = () => {
-    router.post('/login', loginValidation, login);
-    router.post('/signup', signupValidation, signup);
-}
-export default authRoutes;
+router.post('/login', loginValidation, login);
+router.post('/signup', signupValidation, signup);
+
+
+export default router;
+

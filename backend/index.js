@@ -1,32 +1,19 @@
 import express from 'express';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import authRoutes from './Routes/AuthRouter.js';  // Correct Import
+import authRoutes from './Routes/AuthRouter.js';  
+import credentialRoutes from './Routes/CredentialRouter.js';
+import messageRoutes from './Routes/MessageRouter.js';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-dotenv.config();
+import db from './Models/db.js';
 
-const MONGO_URI = process.env.MONGO_URI;
 
-mongoose.connect(MONGO_URI)
-    .then(() => {
-        console.log('MongoDB Connected...');
-    })
-    .catch((err) => {
-        console.error('MongoDB Connection Error:', err);
-    });
-
+db();
 const app = express();
-
-app.use(cors({
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true
-}));
-
+app.use(cors());
 app.use(bodyParser.json());
 app.use('/auth', authRoutes);
-
+app.use('/credential', credentialRoutes);
+app.use('/message', messageRoutes);
 
 app.get("/", (req, res) => {
     res.send("Server is running...");
