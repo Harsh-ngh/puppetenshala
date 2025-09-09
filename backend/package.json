@@ -18,7 +18,8 @@
     "express": "^4.21.2",
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.10.1",
-    "puppeteer": "^24.2.0"
+    "mongoose": "^8.18.1",
+    "puppeteer": "^24.2.0",
+    "react-router-dom": "^6.30.1"
   }
 }
