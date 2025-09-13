@@ -7,5 +7,5 @@ const messageSchema = new Schema({
         required: true
     }
 });
-const messageModel = mongoose.model('messages', messageSchema);
+const messageModel = mongoose.model('message', messageSchema);
 export default messageModel;

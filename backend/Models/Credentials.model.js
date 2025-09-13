@@ -47,5 +47,5 @@ const CredentialSchema = new Schema({
     }
 });
 
-const CredentialModel = mongoose.model('credentials', CredentialSchema);
+const CredentialModel = mongoose.model('credential', CredentialSchema);
 export default CredentialModel;
