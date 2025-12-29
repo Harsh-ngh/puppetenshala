@@ -1,14 +1,14 @@
-// import Router from 'express';
-// import { addMessage, getMessage, updateMessage, deleteMessage } from '../Controllers/MessageController.js';
-// import { messageValidation } from '../Middlewares/MessageValidation.js';
+import Router from 'express';
+import { addMessage, getMessage, updateMessage, deleteMessage } from '../Controllers/MessageController.js';
+import { messageValidation } from '../Middlewares/MessageValidation.js';
 
-// const router = Router();
-// router.post('/addMessage',addMessage);
-// router.get('/getMessage', getMessage);
-// router.put('/updateMessages/:id', messageValidation, updateMessage);
-// router.delete('/deleteMessages/:id', deleteMessage);
+const router = Router();
+router.post('/addMessage',addMessage);
+router.get('/getMessage', getMessage);
+router.put('/updateMessages/:id', messageValidation, updateMessage);
+router.delete('/deleteMessages/:id', deleteMessage);
 
-// export default router;
+export default router;
 
 
 // frontend -> api -> babckend server request -> router -> controller -> model -> db

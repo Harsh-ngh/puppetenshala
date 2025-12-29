@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import { Schema } from "mongoose";
 
 const messageSchema = new Schema({
-    message: {
+    prompt: {
         type: String,
         required: true
     }

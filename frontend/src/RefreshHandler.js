@@ -2,7 +2,7 @@
 import { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-function RefrshHandler({ setIsAuthenticated }) {
+function RefreshHandler({ setIsAuthenticated }) {
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ function RefrshHandler({ setIsAuthenticated }) {
                 location.pathname === '/login' ||
                 location.pathname === '/signup'
             ) {
-                navigate('/home', { replace: false });
+                navigate('/home', { replace: true });
             }
         }
     }, [location, navigate, setIsAuthenticated])
@@ -23,4 +23,4 @@ function RefrshHandler({ setIsAuthenticated }) {
     )
 }
 
-export default RefrshHandler
+export default RefreshHandler

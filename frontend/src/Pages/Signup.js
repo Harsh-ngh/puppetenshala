@@ -29,7 +29,7 @@ function Signup() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(signupInfo)
+                body: JSON.stringify({ name, email, password })
             });
             const result = await response.json();
             if (result.success) {

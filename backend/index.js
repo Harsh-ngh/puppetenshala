@@ -1,8 +1,8 @@
 
 import express from 'express';
 import authRoutes from './Routes/AuthRouter.js';  
-// import credentialRoutes from './Routes/CredentialRouter.js';
-// import messageRoutes from './Routes/MessageRouter.js';
+import credentialRoutes from './Routes/CredentialRouter.js';
+import messageRoutes from './Routes/MessageRouter.js';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import db from './Models/db.js';
@@ -13,8 +13,8 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/auth', authRoutes);
-// app.use('/credential', credentialRoutes);
-// app.use('/message', messageRoutes);
+app.use('/credential', credentialRoutes);
+app.use('/message', messageRoutes);
 
 app.get("/", (req, res) => {
     res.send("Server is running...");

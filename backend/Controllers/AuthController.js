@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import bcrypt from 'bcryptjs';   
 import jwt from 'jsonwebtoken';
 import UserModel from '../Models/User.model.js';
-//import CredentialModel from '../Models/Credentials.model.js';
+import CredentialModel from '../Models/Credentials.model.js';
 
 dotenv.config();
 
@@ -50,7 +50,7 @@ export const login = async (req, res) => {
         const jwtToken = jwt.sign(
             { email: user.email, _id: user._id },
             process.env.JWT_SECRET,
-            { expiresIn: '24 d' }
+            { expiresIn: '365 d' }
         )
 
         res.status(200)
