@@ -40,7 +40,11 @@ const CredentialSchema = new Schema({
     availability: {
         type: String,
         required: true
-    }
+    },
+     status: {
+    type: String,
+    default: "PENDING"
+  },
 });
 
 const CredentialModel = mongoose.model('credential', CredentialSchema);

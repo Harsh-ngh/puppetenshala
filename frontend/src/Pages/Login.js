@@ -62,7 +62,7 @@ function Login() {
                             name="email"
                             placeholder="Enter your Email"
                             value={loginInfo.email}
-                            className="bg-transparent mt-2 w-full p-2 border-b-2 border-sky-700 focus:outline-none placeholder:text-black"
+                            className="bg-transparent mt-2 w-full p-2 border-b-2 border-sky-700 focus:outline-none placeholder:text-black background-color: rgba(255, 255, 255, 0.5);"
                         />
                     </div>
                     <div className="relative text-black mb-2">

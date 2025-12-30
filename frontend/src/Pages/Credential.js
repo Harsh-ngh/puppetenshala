@@ -30,34 +30,80 @@ const Credential = () => {
     setFormData({ ...formData, training: e.target.value.split(",") });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setMessage("");
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     setLoading(true);
+//     setMessage("");
 
-    try {
-      const response = await fetch("http://localhost:5000/credential/addCredentials", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+//     try {
+//       const response = await fetch("http://localhost:5000/credential/addCredentials", {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify(formData),
+//       });
 
-      const data = await response.json();
+//       const data = await response.json();
 
-      if (response.ok) {
-        setMessage("Credential submitted successfully!");
-        handleSuccess("Credentials added successfully");
+//       if (response.ok) {
+//         setMessage("Credential submitted successfully!");
+//         handleSuccess("Credentials added successfully");
 
-        setFormData(initialFormState);
-      } else {
-        setMessage("Error submitting credentials. Please try again.");
-      }
-    } catch (error) {
-      setMessage("Network error. Please check your connection.");
-    } finally {
-      setLoading(false);
+//         setFormData(initialFormState);
+//       } else {
+//         setMessage("Error submitting credentials. Please try again.");
+//       }
+//     } catch (error) {
+//       setMessage("Network error. Please check your connection.");
+//     } finally {
+//       setLoading(false);
+//     }
+    //   };
+    
+    const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setMessage("");
+
+  try {
+    // 1️⃣ Save credentials
+    const saveResponse = await fetch("http://localhost:5000/credential/addCredentials", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    const saveData = await saveResponse.json();
+
+    if (!saveResponse.ok) {
+      throw new Error("Failed to save credentials");
     }
-  };
+
+    handleSuccess("Credentials saved successfully");
+
+await fetch("http://localhost:5000/automation/start", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(formData),
+});
+
+alert("Login window opened. Login manually, then click OK to continue.");
+
+
+await fetch("http://localhost:5000/automation/continue", {
+  method: "POST"
+});
+
+handleSuccess("Automation completed successfully..");
+
+    setFormData(initialFormState);
+  } catch (error) {
+    console.error(error);
+    setMessage("Something went wrong. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="flex flex-col min-h-screen bg-sky-900 text-white">
@@ -91,7 +137,7 @@ const Credential = () => {
             <input type="number" name="rating" placeholder="Rating (1-5)" value={formData.rating} onChange={handleChange} className="bg-sky-700 rounded-lg p-2 w-full text-white placeholder-white focus:outline-none" required />
             <input type="text" name="hiringreason" placeholder="Reason for Hiring" value={formData.hiringreason} onChange={handleChange} className="bg-sky-700 rounded-lg p-2 w-full text-white placeholder-white focus:outline-none" required />
 
-            <select name="availability" value={formData.availability} onChange={handleChange} className="bg-sky-700 rounded-lg p-2 w-full text-white" required>
+            <select name="availability" value={formData.availability} onChange={handleChange} className="bg-sky-700 rounded-lg p-2 w-full text-white placeholder-white focus:outline-none" required>
               <option value="">Select Availability</option>
               <option value="Immediate">Immediate</option>
               <option value="In 1 Month">In 1 Month</option>
