@@ -48,7 +48,7 @@ export const continueAutomation = async (req, res) => {
 
   
     const cookies = await page.cookies();
-    // fs.writeFileSync("session.json", JSON.stringify(cookies, null, 2));
+    
 
     const data = automationData;
 

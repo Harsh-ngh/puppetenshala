@@ -37,6 +37,10 @@ const CredentialSchema = new Schema({
         type: String,
         required: true
     },
+    resume: {
+        type: String,
+        required: true
+    },
     availability: {
         type: String,
         required: true

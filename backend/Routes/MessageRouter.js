@@ -11,5 +11,5 @@ router.delete('/deleteMessages/:id', deleteMessage);
 export default router;
 
 
-// frontend -> api -> babckend server request -> router -> controller -> model -> db
-// frontend <- api <- babckend server response <- router <- controller <- model <- db
+// frontend -> api -> backend server request -> router -> controller -> model -> db
+// frontend <- api <- backend server response <- router <- controller <- model <- db

@@ -7,7 +7,7 @@ import automationRoutes from './Routes/AutomationRouter.js';
 
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import db from './Models/db.js';
+import db from './db.js';
 
 
 db();

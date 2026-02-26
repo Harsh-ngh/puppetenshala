@@ -2,7 +2,7 @@ import Joi from "joi";
 
 export const credentialValidation = (req, res, next) => {
     const schema = Joi.object({
-        college: Joi.string().min(10).max(100).required(),
+        college: Joi.string().min(4).max(100).required(),
         degree: Joi.string().min(3).max(100).required(),
         stream: Joi.string().min(3).max(100).required(),
         percentage: Joi.number().min(0).max(100).required(),

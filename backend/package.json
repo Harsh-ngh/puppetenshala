@@ -19,6 +19,7 @@
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.18.1",
+    "multer": "^2.0.2",
     "puppeteer": "^24.2.0",
     "react-router-dom": "^6.30.1"
   }
